@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تنزيل اللعبة - DoubleFace</title>
+    <style>
+        /* ========================================
+           DoubleFace Download Page Style
+           Ultra Dark Theme | Vibrant Accents
+           ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #03050b;
+            font-family: 'Cairo', 'Tajawal', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ========== Dark Decorations ========== */
+        .decor-dot {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .decor-dot-1 {
+            width: 500px;
+            height: 500px;
+            background: #ff0055;
+            top: -200px;
+            right: -200px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .decor-dot-2 {
+            width: 600px;
+            height: 600px;
+            background: #00aaff;
+            bottom: -250px;
+            left: -250px;
+            animation: pulse 10s ease-in-out infinite reverse;
+        }
+
+        .decor-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff0055, #00aaff, #ff0055, transparent);
+            z-index: 1;
+            animation: lineMove 3s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes lineMove {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* ========== Main Container ========== */
+        .container_1M {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            backdrop-filter: blur(3px);
+        }
+
+        /* ========== DoubleFace Badge ========== */
+        .doubleface-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            border-radius: 60px;
+            backdrop-filter: blur(10px);
+            animation: fadeInDown 0.8s ease-out;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .double-icon {
+            font-size: 1.2rem;
+            color: #ff0055;
+            animation: iconPulse 1.5s ease-in-out infinite;
+        }
+
+        .double-text {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #ff0055, #00aaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        /* ========== Header ========== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.1s backwards;
+        }
+
+        .logo_1M h2 {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #ff0055, #ff3366);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hearer_Btn_1M button {
+            background: rgba(255, 0, 85, 0.2);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .hearer_Btn_1M button:hover {
+            background: #ff0055;
+            border-color: #ff0055;
+            transform: translateY(-2px);
+        }
+
+        /* ========== Details Section ========== */
+        .Details_1M {
+            background: rgba(10, 15, 26, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            border-radius: 24px;
+            padding: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .Details_1M h1 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            padding-right: 0.8rem;
+            border-right: 3px solid #ff0055;
+            background: linear-gradient(135deg, #ffffff, #ff3366);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .Details_1M h1:first-of-type {
+            margin-top: 0;
+        }
+
+        .Details_1M ul {
+            list-style: none;
+            padding-right: 1rem;
+        }
+
+        .Details_1M li {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            position: relative;
+            padding-right: 1.2rem;
+        }
+
+        .Details_1M li::before {
+            content: "🎭";
+            position: absolute;
+            right: -0.5rem;
+            color: #ff0055;
+            font-size: 0.8rem;
+        }
+
+        .target {
+            color: #ff3366;
+            font-weight: 500;
+        }
+
+        .Details_1M span {
+            margin-right: 0.5rem;
+        }
+
+        /* ========== Download Buttons ========== */
+        .Downlaod_Btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .Downlaod_Btns button {
+            background: linear-gradient(45deg, #ff0055, #ff3366);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            flex: 1;
+            min-width: 200px;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
+        }
+
+        .Downlaod_Btns button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.5);
+        }
+
+        .web-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #00aaff, #0099ff);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            margin-top: 1rem;
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+        }
+
+        .web-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.5);
+        }
+
+        /* ========== Back Button ========== */
+        .back-button-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .back-btn {
+            position: relative;
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-family: inherit;
+            overflow: hidden;
+        }
+
+        .back-btn-text {
+            position: relative;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            border-radius: 50px;
+            letter-spacing: 1px;
+            z-index: 2;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 0, 85, 0.3);
+        }
+
+        .back-btn:hover .back-btn-text {
+            color: white;
+            border-color: #ff0055;
+            transform: translateY(-2px);
+        }
+
+        /* ========== Footer Quote ========== */
+        .footer-quote {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.25);
+            font-style: italic;
+            letter-spacing: 1px;
+            animation: fadeInUp 0.8s ease-out 0.45s backwards;
+        }
+
+        /* ========== Animations ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 768px) {
+            .container_1M {
+                padding: 1rem;
+            }
+            
+            .Details_1M {
+                padding: 1.2rem;
+            }
+            
+            .Details_1M h1 {
+                font-size: 1.2rem;
+            }
+            
+            .Details_1M li {
+                font-size: 0.85rem;
+            }
+            
+            .doubleface-badge {
+                margin-bottom: 1rem;
+                gap: 0.5rem;
+                padding: 0.4rem 1rem;
+            }
+            
+            .double-icon {
+                font-size: 0.9rem;
+            }
+            
+            .double-text {
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+            }
+            
+            .Downlaod_Btns button {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ========== Custom Scrollbar ========== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #03050b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff0055;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff3366;
+        }
+
+        /* ========== Selection Color ========== */
+        ::selection {
+            background: #ff0055;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="decor-dot decor-dot-1"></div>
+    <div class="decor-dot decor-dot-2"></div>
+    <div class="decor-line"></div>
+
+    <div class="container_1M">
+        
+        <div class="doubleface-badge">
+            <span class="double-icon">⚡</span>
+            <span class="double-text">DOUBLE FACE</span>
+            <span class="double-icon">⚡</span>
+        </div>
+
+        <header>
+            <div class="logo_1M">
+                <h2>👋 أهلاً بك في لعبة DoubleFace</h2>
+            </div>
+            <div class="hearer_Btn_1M">
+                <button onclick="alert('المطور: مهند أحمد وأدهم أشرف 🎭')">معلومات عن مطور هذه اللعبة</button>
+            </div>
+        </header>
+
+        <div class="Details_1M">
+            <h1>🎮 شرح اللعبة</h1>
+            <ul>
+                <li>DoubleFace هي لعبة جماعية تعتمد على الذكاء والملاحظة</li>
+                <li>كل لاعب يحصل على دور سري (كشاف أو وجه مخفي)</li>
+                <li>الكشافين يعرفون الكلمة، بينما الوجه المخفي لا يعرفها</li>
+                <li>:الهدف</li>
+                <li class="target">🕵️ الكشافين: اكتشاف الوجه المخفي</li>
+                <li class="target">🎭 الوجه المخفي: التظاهر ومعرفة الكلمة بدون انكشاف</li>
+            </ul>
+
+            <h1>🧠 طريقة اللعب</h1>
+            <ul>
+                <li>يتم اختيار عدد اللاعبين والتوبيك (التصنيف)</li>
+                <li>يتم توزيع الأدوار عشوائيًا</li>
+                <li>كل لاعب يرى كلمته بشكل سري</li>
+                <li>تبدأ جولة أسئلة بين اللاعبين</li>
+                <li>ثم مناقشة حرة لفترة محددة</li>
+                <li>بعد ذلك يتم التصويت لإخراج لاعب مشتبه به</li>
+                <li>:تتكرر الجولات حتى</li>
+                <li class="target">يتم كشف كل الوجوه المخفية</li>
+                <li class="target">أو يتبقى عدد قليل من اللاعبين</li>
+                <li>:وفي النهاية</li>
+                <li class="target">الوجه المخفي يحاول تخمين الكلمة للفوز</li>
+            </ul>
+
+            <h1>⚖️ القوانين</h1>
+            <ul>
+                <li>ممنوع إظهار الكلمة لأي لاعب <span>❌</span></li>
+                <li>ممنوع استخدام الهاتف أو البحث أثناء اللعبة <span>❌</span></li>
+                <li>يجب الإجابة بصدق حسب معرفتك بالكلمة <span>✔️</span></li>
+                <li>لكل لاعب صوت واحد فقط في التصويت <span>✔️</span></li>
+                <li>اللاعب الذي يتم إخراجه لا يشارك في الجولات التالية <span>❌</span></li>
+                <li>يتم احترام رأي الأغلبية في استمرار أو إنهاء اللعبة <span>✔️</span></li>
+                <li>اللعب بروح رياضية بدون غش أو تحايل <span>✔️</span></li>
+            </ul>
+
+            <h1>🛡️ شروط الاستخدام</h1>
+            <ul>
+                <li>باستخدامك للعبة، أنت توافق على: <span>🔵</span></li>
+                <li class="target">استخدام اللعبة لأغراض الترفيه فقط</li>
+                <li class="target">عدم استغلال اللعبة في أي نشاط غير قانوني أو مسيء</li>
+                <li>نحن غير مسؤولين عن أي سلوك غير لائق من اللاعبين <span>🔵</span></li>
+                <li>يمكن تحديث اللعبة أو تعديلها في أي وقت لتحسين التجربة <span>🔵</span></li>
+            </ul>
+
+            <h1>🎯 نصائح للفوز</h1>
+            <ul>
+                <li>راقب إجابات اللاعبين كويس 👀</li>
+                <li>اسأل أسئلة ذكية مش مباشرة 💡</li>
+                <li>كوجه مخفي: حاول تمشي مع الكلام بدون مبالغة 🎭</li>
+                <li>ككشاف: خليك هادي ومتسرعش في الحكم 🕵️</li>
+            </ul>
+
+            <h1>📥 تنزيل اللعبة</h1>
+            <div class="Downlaod_Btns">
+                <button id="btn-apk" onclick="alert('جاري تجهيز نسخة الأندرويد... قريبًا 📱')">📱 تنزيل اللعبة للهاتف</button>
+                <button id="btn-exe" onclick="alert('جاري تجهيز نسخة الكمبيوتر... قريبًا 💻')">💻 تنزيل اللعبة للكمبيوتر</button>
+            </div>
+            <button class="web-btn" onclick="window.location.href = 'https://ben-el-sotor-this-first-version.netlify.app/'">
+                🎮 العب اللعبة عن طريق الموقع الإلكتروني (النسخه القديمه)
+            </button>
+        </div>
+
+        <div class="back-button-wrapper">
+            <button class="back-btn" onclick="location.href='index.html'">
+                <span class="back-btn-text">الرجوع للرئيسية</span>
+            </button>
+        </div>
+
+        <div class="footer-quote">
+            كل وجه له قصة.. اختر أن تلعب بصدق! 🎭
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
